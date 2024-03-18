@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar Sesión</title>
-  <!-- Enlace al CDN de Bootstrap -->
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -40,23 +40,23 @@
 <script>
     $(document).ready(function(){
       $('#loginForm').submit(function(event){
-        event.preventDefault(); // Evitar el envío del formulario por defecto
+        event.preventDefault(); 
         
-        // Obtener los datos del formulario
+        
         var formData = $(this).serialize();
         
-        // Enviar la solicitud AJAX al servidor (usando JSONP)
+        
         $.ajax({
           type: 'POST',
           url: 'validar.php',
-          data: formData + '&callback=?', // Agregar '?callback=?' para indicar JSONP
-          dataType: 'jsonp', // Especificar el tipo de datos como JSONP
+          data: formData + '&callback=?', 
+          dataType: 'jsonp', 
           success: function(response){
             if(response.success){
-              alert(response.message); // Mostrar mensaje de éxito
-              window.location.href = 'inicio.html'; // Redirigir a la página de inicio
+              alert(response.message); 
+              window.location.href = 'inicio.html'; 
             } else {
-              alert(response.message); // Mostrar mensaje de error
+              alert(response.message); 
             }
           }
         });
